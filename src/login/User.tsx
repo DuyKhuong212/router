@@ -32,7 +32,6 @@ const User = () => {
        
     const storedIsAuthenticated = localStorage.getItem('isAuthenticated');
     // console.log(storedIsAuthenticated)
-    
     // if (storedIsAuthenticated) {
     //    setIsAuthenticated(true);
     //   navigate('/home')
