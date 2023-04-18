@@ -1,0 +1,8 @@
+.content {
+    position: fixed;
+    left: 220px;
+    /* top: 60px; */
+}
+.postLink{
+    margin-top: 10px;
+}

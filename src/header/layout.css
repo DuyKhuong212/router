@@ -1,0 +1,35 @@
+.nav {
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    background-color: #f5f5f5;
+    justify-content: center;
+    z-index: 1;
+    /* position: absolute; */
+  }
+  
+  .flex {
+    display: flex;
+    justify-content: center;
+  }
+  
+  .flex > div {
+    margin-right: 2rem;
+    font-size: 34px;
+   
+    
+  }
+   .link {
+    color: red;
+    text-decoration: inherit;
+  }
+  .flex > div :hover {
+    font-size: 40px;
+    color: black;
+    
+  }
+  Link :active {
+    color: black;
+  }
+  
