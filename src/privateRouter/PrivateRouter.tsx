@@ -16,6 +16,8 @@ const PrivateRouter = ({children}:any) => {
   }
 
   return  ( ctx.isLoggedIn == true ? children : <Navigate to = "/"/> )
+
+  
 }
 
 export default PrivateRouter
