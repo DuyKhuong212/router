@@ -1,14 +1,14 @@
-import React, { useContext, useState } from 'react'
+import React, { useContext, useEffect, useState } from 'react'
 import { useNavigate } from 'react-router-dom';
 import { Authen, chillUserProp } from './User';
 import './style.css'
+import AuthContext from '../store/auth-context';
 
 const Login = ({userProp}:chillUserProp) => {
 const [textEmail, setTextEmail] = useState("");
     const [textPass, setTextPass] = useState("");
-    // const [checkLogin, setCheckLogin] = useState(false);
-    const { isAuthenticated, setIsAuthenticated } = useContext(Authen);
-    
+    const authCtx = useContext(AuthContext);
+
     const navigate = useNavigate();
 
     const email = (event: React.ChangeEvent<HTMLInputElement>) => {
@@ -18,25 +18,22 @@ const [textEmail, setTextEmail] = useState("");
     const passWord = (event: React.ChangeEvent<HTMLInputElement>) => {
       setTextPass(event.target.value);
     };
+
+    useEffect(() => {
+      if (authCtx.isLoggedIn === true) {
+        navigate("/home");
+      }
+    })
   
     const handleSubmit = () => {
         const u = userProp.find(
             (user) =>
-              user.name === textEmail && user.pass === textPass && isAuthenticated === false
-              // && checkLogin === false
-          )
+              user.name === textEmail && user.pass === textPass)
       if (u) {
-        // console.log("thanh cong");
-        // setCheckLogin(true);
-        // localStorage.setItem('isAdmin', u.isAdmin)
-        // localStorage.setItem('state', 'isLogin')
-
-        setIsAuthenticated(true);
-        localStorage.setItem('isAuthenticated', 'true');
+        authCtx.onLogin();
         navigate("/home");
       } else {
         console.log("vui long nhap lai");
-        // setCheckLogin(false);
       }
     }
 

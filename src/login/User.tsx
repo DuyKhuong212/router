@@ -13,13 +13,13 @@ export interface chillUserProp {
 }
 
 export interface UcontextType {
-  isAuthenticated: boolean
+  isAuthenticated2: boolean
   setIsAuthenticated: React.Dispatch<React.SetStateAction<boolean>>;
 }
 
 export const Authen = createContext<UcontextType> ({
-  isAuthenticated : false,
-  setIsAuthenticated : () => {}
+  isAuthenticated2 : false,
+  setIsAuthenticated : (islogin) => {}
 })
 
 const User = () => {
@@ -36,9 +36,9 @@ const User = () => {
     //    setIsAuthenticated(true);
     //   navigate('/home')
     // }
-
+  
   return (
-    <Authen.Provider value={{ isAuthenticated, setIsAuthenticated }}>
+    <Authen.Provider value={{ isAuthenticated2 :isAuthenticated, setIsAuthenticated : ()=> {} }}>
     <Login userProp = {user}/>
   </Authen.Provider>
   )
