@@ -74,8 +74,7 @@ const router = createBrowserRouter([
         element: <PrivateRouter><PermissionRouter><Contact /></PermissionRouter></PrivateRouter>,
       },
     ],
-  },
-
+  }
 ]);
 
 const Router = () => {

@@ -22,6 +22,9 @@ const Header = () => {
             <button onClick={ctx.onLogout}>Logout</button>
           </li>
         )}
+         <div>
+            <Link  className='link' to='/'>login</Link>
+          </div>
         </div>
       </div>
   )

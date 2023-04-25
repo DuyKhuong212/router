@@ -2,26 +2,37 @@ import React, { useEffect, useState } from "react";
 import AuthContext from "./store/auth-context";
 import Router from "./router/Router";
 import CryptoJS from "crypto-js"
-import { useNavigate } from "react-router-dom";
 
 
 const App = () => {
-  const [isLoggedIn, setIsLoggedIn] = useState(false);
   const key = "isAuthenticated";
-
-  useEffect(() => {
+  const gettInistvalue = () => {
     const encryptedDataFromStorage = localStorage.getItem(key) as string;
 
     if (encryptedDataFromStorage != null){
       const bytes = CryptoJS.AES.decrypt(encryptedDataFromStorage, key);
       const decryptedData = bytes.toString(CryptoJS.enc.Utf8);
-
-      if (decryptedData === 'true') {
-        setIsLoggedIn(true);
-      }
-      console.log(decryptedData+" decryptedData");
+      return  decryptedData === 'true'
     }
-  }, []);
+    return false;
+  }
+  const [isLoggedIn, setIsLoggedIn] = useState(gettInistvalue);
+
+
+  // useEffect(() => {
+  //   const encryptedDataFromStorage = localStorage.getItem(key) as string;
+
+  //   if (encryptedDataFromStorage != null){
+  //     const bytes = CryptoJS.AES.decrypt(encryptedDataFromStorage, key);
+  //     const decryptedData = bytes.toString(CryptoJS.enc.Utf8);
+
+  //     if (decryptedData === 'true') {
+  //       setIsLoggedIn(true);
+  //     }
+  //   }
+  //   console.log(" decryptedData");
+  // }, []);
+
 
   const logoutHandler = () => {
     localStorage.removeItem(key);
@@ -33,6 +44,7 @@ const App = () => {
     localStorage.setItem(key, encryptedData);
     setIsLoggedIn(true);
   };
+  console.log("aaa")
 
   return (
     <AuthContext.Provider
